@@ -1,0 +1,817 @@
+
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
+import edu.uci.ics.jung.algorithms.layout.CircleLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Paint;
+import java.awt.Label;
+
+import javax.swing.JFrame;
+
+import org.apache.commons.collections15.Transformer;
+import org.apache.commons.collections15.functors.ConstantTransformer;
+
+
+import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.graph.Graph;
+import edu.uci.ics.jung.graph.SparseMultigraph;
+import edu.uci.ics.jung.graph.util.EdgeType;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.jung.visualization.picking.PickedInfo;
+import edu.uci.ics.jung.visualization.picking.PickedState;
+import edu.uci.ics.jung.visualization.renderers.DefaultVertexLabelRenderer;
+import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+//import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Design extends Frame  {
+    public Graph<String,String> g,g1;
+public int path1,path2,path3;
+    /**
+     *
+     */
+    
+    String[] c1=new String[35];
+    String[] c2=new String[35];
+    String[] c3=new String[35];
+    String[] c4=new String[35];
+    String[] c5=new String[35];
+   public int click=0;
+    double[] sd = new double[35];
+    private int nvertex=10;
+    private double t=Frame.nvertex;
+    private String n=Frame.text;
+    private static double a0=Frame.x,a1=Frame.x1,a2=Frame.x2,a3=Frame.x3,a4=Frame.x4,a5=Frame.x5,a6=Frame.x6,a7=Frame.x7,a8=Frame.x8,a9=Frame.x9,a10=Frame.x10,a11=Frame.x11,a12=Frame.x12,a13=Frame.x13,a14=Frame.x14,a15=Frame.x15,a16=Frame.x16,a17=Frame.x17,a18=Frame.x18,a19=Frame.x19,a20=Frame.x20,a21=Frame.x21,a22=Frame.x22,a23=Frame.x23,a24=Frame.x24,a25=Frame.x25,a26=Frame.x26,a27=Frame.x27,a28=Frame.x28,a29=Frame.x29,a30=Frame.x30;
+    private static double b0=Frame.y,b1=Frame.y1,b2=Frame.y2,b3=Frame.y3,b4=Frame.y4,b5=Frame.y5,b6=Frame.y6,b7=Frame.y7,b8=Frame.y8,b9=Frame.y9,b10=Frame.y10,b11=Frame.y11,b12=Frame.y12,b13=Frame.y13,b14=Frame.y14,b15=Frame.y15,b16=Frame.y16,b17=Frame.y17,b18=Frame.y18,b19=Frame.y19,b20=Frame.y20,b21=Frame.y21,b22=Frame.y22,b23=Frame.y23,b24=Frame.y24,b25=Frame.y25,b26=Frame.y26,b27=Frame.y27,b28=Frame.y28,b29=Frame.y29,b30=Frame.y30;
+   
+ static  Point2D p = new Point2DImpl();
+  static Point2D ps = new Point2DImpl(a0,b0);
+      static Point2D p1 = new Point2DImpl(a1,b1);
+      static  Point2D p2 = new Point2DImpl(a2,b2);
+       static Point2D p3= new Point2DImpl(a3,b3);
+       static Point2D p4 = new Point2DImpl(a4,b4);
+       static Point2D p5 = new Point2DImpl(a5,b5);
+       static Point2D p6 = new Point2DImpl(a6,b6);
+      static  Point2D p7 = new Point2DImpl(a7,b7);
+       static Point2D p8 = new Point2DImpl(a8,b8);
+       static Point2D p9 = new Point2DImpl(a9,b9);
+       static Point2D p10 = new Point2DImpl(a10,b10);
+       static Point2D p11 = new Point2DImpl(a11,b11);
+       static Point2D p12 = new Point2DImpl(a12,b12);
+       static Point2D p13 = new Point2DImpl(a13,b13);
+       static Point2D p14 = new Point2DImpl(a14,b14);
+       static Point2D p15 = new Point2DImpl(a15,b15);
+       static Point2D pd = new Point2DImpl(a16,b16);
+       static Point2D p17 = new Point2DImpl(a17,b17);
+       static Point2D p18 = new Point2DImpl(a18,b18);
+       static Point2D p19 = new Point2DImpl(a19,b19);
+      static Point2D p20 = new Point2DImpl(a20,b20);
+       static Point2D p21 = new Point2DImpl(a21,b21);
+       static Point2D p22 = new Point2DImpl(a22,b22);
+       static Point2D p23 = new Point2DImpl(a23,b23);
+       static Point2D p24 = new Point2DImpl(a24,b24);
+       static Point2D p25 = new Point2DImpl(a25,b25);
+       static Point2D p26 = new Point2DImpl(a26,b26);
+       static Point2D p27 = new Point2DImpl(a27,b27);
+       static Point2D p28 = new Point2DImpl(a28,b28);
+       static Point2D p29 = new Point2DImpl(a29,b29);
+       static Point2D p30 = new Point2DImpl(a30,b30);
+public double Distance(Point2D p1, Point2D p2){
+    double d=p1.distance(p2);
+    return d;
+}
+    public void Point2D(Layout l) {
+       
+       
+       l.setLocation("0",ps);
+      l.setLocation("1",p1);
+       l.setLocation("2",p2);
+       l.setLocation("3",p3);
+       l.setLocation("4",p4);
+       l.setLocation("5",p5);
+       l.setLocation("6",p6);
+       l.setLocation("7",p7);
+       l.setLocation("8",p8);
+       l.setLocation("9",p9);
+       l.setLocation("10",p10);
+       l.setLocation("12",p12);
+       l.setLocation("13",p13);
+       l.setLocation("11",p11);
+       l.setLocation("14",p14);
+       l.setLocation("15",p15);
+       l.setLocation("16",pd);
+         l.setLocation("17",p17);
+          l.setLocation("18",p18);
+           l.setLocation("19",p19);
+            l.setLocation("20",p20);
+             l.setLocation("21",p21);
+              l.setLocation("22",p22);
+               l.setLocation("23",p23);
+       l.setLocation("24",p24);
+        l.setLocation("25",p25);
+        l.setLocation("26",p26);
+        l.setLocation("27",p27);
+         l.setLocation("28",p28);
+          l.setLocation("29",p29);
+           l.setLocation("30",p30);
+             
+       sd[1]=Distance(ps,p1);
+         sd[2]=Distance(ps,p2); 
+         sd[3]=Distance(ps,p3); 
+         sd[4]=Distance(ps,p4);
+         sd[5]=Distance(ps,p5); 
+         sd[6]=Distance(ps,p6);
+          sd[7]=Distance(ps,p7);
+           sd[8]=Distance(ps,p8);
+            sd[9]=Distance(ps,p9);
+             sd[10]=Distance(ps,p10);
+              sd[11]=Distance(ps,p11);
+              sd[12]=Distance(ps,p12);
+              sd[13]=Distance(ps,p13);
+              sd[14]=Distance(ps,p14);
+              sd[15]=Distance(ps,p15);
+              sd[16]=Distance(ps,pd);
+              sd[17]=Distance(ps,p17);
+              sd[18]=Distance(ps,p18);
+              sd[19]=Distance(ps,p19);
+              sd[20]=Distance(ps,p20);
+              sd[21]=Distance(ps,p21);
+              sd[22]=Distance(ps,p22);
+              sd[23]=Distance(ps,p23);
+              sd[24]=Distance(ps,p24);
+              sd[25]=Distance(ps,p25);
+              sd[26]=Distance(ps,p26);
+              sd[27]=Distance(ps,p27);
+              sd[28]=Distance(ps,p28);
+              sd[29]=Distance(ps,p29);
+              sd[30]=Distance(ps,p30);
+              
+        
+      
+    }
+    void addEdge(Graph a,Layout l){
+       
+             
+       //System.out.println("DD="+Distance(ps,pd));
+              if (ps.distance(p1)<50.0)
+                   a.addEdge("a","0", "1", EdgeType.DIRECTED);
+      
+       //    else
+         //   System.out.println("distance more D1");
+       if (ps.distance(p2)<50.0)
+                   a.addEdge("b","0", "2", EdgeType.DIRECTED);
+      
+         //  else
+           // System.out.println("distance more D2");
+       if (ps.distance(p3)<50.0)
+                   a.addEdge("c","0", "3", EdgeType.DIRECTED);
+      
+           //else
+           // System.out.println("distance more D3");
+       if (ps.distance(p4)<50.0)
+                   a.addEdge("d","0", "4", EdgeType.DIRECTED);
+      
+           //else
+            //System.out.println("distance moreD4");
+       if (ps.distance(p5)<50.0)
+                   a.addEdge("e","0", "5", EdgeType.DIRECTED);
+      
+          // else
+            //System.out.println("distance moreD5");
+       if (ps.distance(p6)<50.0)
+                   a.addEdge("f","0", "6", EdgeType.DIRECTED);
+      
+           //else
+           // System.out.println("distance moreD6");
+       if (ps.distance(p7)<50.0)
+                   a.addEdge("g","0", "7", EdgeType.DIRECTED);
+      
+          // else
+         ///   System.out.println("distance moreD7");
+       if (ps.distance(p8)<50.0)
+                   a.addEdge("h","0", "8", EdgeType.DIRECTED);
+      //
+        //   else
+       //     System.out.println("distance moreD8");
+       if (ps.distance(p9)<50.0)
+                   a.addEdge("i","0", "9", EdgeType.DIRECTED);
+      
+          // else
+     //       System.out.println("distance moreD9");
+       if (ps.distance(p10)<50.0)
+                   a.addEdge("j","0", "10", EdgeType.DIRECTED);
+      
+           //else
+     //       System.out.println("distance moreD10");
+       if (ps.distance(pd)<50.0)
+                   a.addEdge("k","0", "11", EdgeType.DIRECTED);
+      
+           //else
+     //       System.out.println("distance moreDD");
+
+    }   
+  
+    void cluster()
+    {   
+       if (sd[1]<=50.0)
+                   c1[1]="1";
+       else if(sd[1]>50.0 && sd[1]<=100.0)
+           c2[1]="1";
+       else if(sd[1]>100.0 && sd[1]<=150.0)
+           c3[1]="1";
+       else if(sd[1]<250)
+           c4[1]="1";
+           else c5[1]="1";
+       //
+       if (sd[2]<=50.0)
+           c1[2]="2";
+       else if(sd[2]>50.0 && sd[2]<=100.0)
+           c2[2]="2";
+       else if(sd[2]>100.0 && sd[2]<=150.0)
+           c3[2]="2";
+       else if(sd[2]<250)
+           c4[2]="2";
+           else 
+           c5[2]="2";
+       //
+        if (sd[3]<=50.0)
+            c1[3]="3";
+        else if(sd[3]>50.0 && sd[3]<=100.0)
+           c2[3]="3";
+       else if(sd[3]>100.0 && sd[3]<=150.0)
+           c3[3]="3";
+       else if(sd[3]<250)
+           c4[3]="3";
+           else
+           c5[3]="3";
+        //
+         if (sd[4]<=50.0)
+              c1[4]="4";
+       else if(sd[4]>50.0 && sd[4]<=100.0)
+           c2[4]="4";
+       else if(sd[4]>100.0 && sd[4]<=150.0)
+           c3[4]="4";
+       else if(sd[4]<250)
+           c4[4]="4";
+           else
+           c5[4]="4";
+         //
+          if (sd[5]<=50.0)
+                   c1[5]="5";
+       else if(sd[5]>50.0 && sd[5]<=100.0)
+           c2[5]="5";
+       else if(sd[5]>100.0 && sd[5]<=150.0)
+           c3[5]="5";
+       else if(sd[5]<250)
+           c4[5]="5";
+           else
+           c5[5]="5";
+          //
+           if (sd[6]<=50.0)
+                   c1[6]="6";
+       else if(sd[6]>50.0 && sd[6]<=100.0)
+           c2[6]="6";
+       else if(sd[6]>100.0 && sd[6]<=150.0)
+           c3[6]="6";
+       else if(sd[6]<250)
+           c4[6]="6";
+           else
+           c5[6]="6";
+              //
+            if (sd[7]<=50.0)
+                   c1[7]="7";
+       else if(sd[7]>50.0 && sd[7]<=100.0)
+           c2[7]="7";
+       else if(sd[7]>100.0 && sd[7]<=150.0)
+           c3[7]="7";
+       else if(sd[7]<250)
+           c4[7]="7";
+           else
+           c5[7]="7";
+            //
+             if (sd[8]<=50.0)
+                   c1[8]="8";
+       else if(sd[8]>50.0 && sd[8]<=100.0)
+           c2[8]="8";
+       else if(sd[8]>100.0 && sd[8]<=150.0)
+           c3[8]="8";
+       else if(sd[8]<250)
+           c4[8]="8";
+           else
+           c5[8]="8";
+             //
+              if (sd[9]<=50.0)
+                   c1[9]="9";
+       else if(sd[9]>50.0 && sd[9]<=100.0)
+           c2[9]="9";
+       else if(sd[9]>100.0 && sd[9]<=150.0)
+           c3[9]="9";
+       else if(sd[9]<250)
+           c4[9]="9";
+           else
+           c5[9]="9";
+              //
+               if (sd[10]<=50.0)
+                   c1[10]="10";
+       else if(sd[10]>50.0 && sd[10]<=100.0)
+           c2[10]="10";
+       else if(sd[10]>100.0 && sd[10]<=150.0)
+           c3[10]="10";
+       else if(sd[10]<250)
+           c4[10]="10";
+           else
+           c5[10]="10";
+               //
+                if (sd[11]<=50.0)
+                   c1[11]="11";
+       else if(sd[11]>50.0 && sd[11]<=100.0)
+           c2[11]="11";
+       else if(sd[11]>100.0 && sd[11]<=150.0)
+           c3[11]="11";
+       else if(sd[11]<250)
+           c4[11]="11";
+           else
+           c5[11]="11";
+                //
+                 if (sd[12]<=50.0)
+                   c1[12]="12";
+       else if(sd[12]>50.0 && sd[12]<=100.0)
+           c2[12]="12";
+       else if(sd[12]>100.0 && sd[12]<=150.0)
+           c3[12]="12";
+       else if(sd[12]<250)
+           c4[12]="12";
+           else
+           c5[12]="12";
+                 //
+                  if (sd[13]<=50.0)
+                   c1[13]="13";
+       else if(sd[13]>50.0 && sd[13]<=100.0)
+           c2[13]="13";
+       else if(sd[13]>100.0 && sd[13]<=150.0)
+           c3[13]="13";
+       else if(sd[13]<250)
+           c4[13]="13";
+           else
+           c5[13]="13";
+                  //
+                   if (sd[14]<=50.0)
+                   c1[14]="14";
+       else if(sd[14]>50.0 && sd[14]<=100.0)
+           c2[14]="14";
+       else if(sd[14]>100.0 && sd[14]<=150.0)
+           c3[14]="14";
+       else if(sd[14]<250)
+           c4[14]="14";
+           else
+           c5[14]="14";
+                   //
+                    if (sd[15]<=50.0)
+                   c1[15]="15";
+       else if(sd[15]>50.0 && sd[15]<=100.0)
+           c2[15]="15";
+       else if(sd[15]>100.0 && sd[15]<=150.0)
+           c3[15]="15";
+       else if(sd[15]<250)
+           c4[15]="15";
+           else
+           c5[15]="15";
+                    //
+                     if (sd[16]<=50.0)
+                   c1[16]="16";
+       else if(sd[16]>50.0 && sd[16]<=100.0)
+           c2[16]="16";
+       else if(sd[16]>100 && sd[16]<=150.0)
+           c3[16]="16";
+       else if(sd[16]<250)
+           c4[16]="16";
+           else
+           c5[16]="16";
+                     //
+                     if (sd[17]<=50.0)
+                   c1[17]="17";
+       else if(sd[17]>50.0 && sd[17]<=100.0)
+           c2[17]="17";
+       else if(sd[17]>100 && sd[17]<=150.0)
+           c3[17]="17";
+       else if(sd[17]<250)
+           c4[17]="17";
+           else
+           c5[17]="17";
+                                          //
+                     if (sd[18]<=50.0)
+                   c1[18]="18";
+       else if(sd[18]>50.0 && sd[18]<=100.0)
+           c2[18]="18";
+       else if(sd[18]>100 && sd[18]<=150.0)
+           c3[18]="18";
+       else if(sd[18]<250)
+           c4[18]="18";
+           else
+           c5[18]="18";
+                     //
+                     if (sd[19]<=50.0)
+                   c1[19]="19";
+       else if(sd[19]>50.0 && sd[19]<=100.0)
+           c2[16]="19";
+       else if(sd[19]>100 && sd[19]<=150.0)
+           c3[19]="19";
+       else if(sd[19]<250)
+           c4[19]="19";
+           else
+           c5[19]="19";
+                     //
+                     if (sd[20]<=50.0)
+                   c1[20]="20";
+       else if(sd[20]>50.0 && sd[20]<=100.0)
+           c2[20]="20";
+       else if(sd[20]>100 && sd[20]<=150.0)
+           c3[20]="20";
+       else if(sd[20]<250)
+           c4[20]="20";
+           else
+           c5[20]="20";
+                     //
+                    //
+                     if (sd[21]<=50.0)
+                   c1[21]="21";
+       else if(sd[21]>50.0 && sd[21]<=100.0)
+           c2[21]="21";
+       else if(sd[21]>100 && sd[21]<=150.0)
+           c3[21]="21";
+       else if(sd[21]<250)
+           c4[21]="21";
+           else
+           c5[21]="21";
+                     //
+                     if (sd[22]<=50.0)
+                   c1[22]="22";
+       else if(sd[22]>50.0 && sd[22]<=100.0)
+           c2[22]="22";
+       else if(sd[22]>100 && sd[22]<=150.0)
+           c3[22]="22";
+       else if(sd[22]<250)
+           c4[22]="22";
+       else if(sd[22]<250)
+           c4[22]="22";
+           else
+           c5[22]="22";
+                     //
+                     if (sd[23]<=50.0)
+                   c1[23]="23";
+       else if(sd[23]>50.0 && sd[23]<=100.0)
+           c2[23]="23";
+       else if(sd[23]>100 && sd[23]<=150.0)
+           c3[23]="23";
+       else if(sd[23]<250)
+           c4[23]="23";
+           else
+           c5[23]="23";
+                     //
+                     if (sd[24]<=50.0)
+                   c1[24]="24";
+       else if(sd[24]>50.0 && sd[24]<=100.0)
+           c2[24]="24";
+       else if(sd[24]>100 && sd[24]<=150.0)
+           c3[24]="24";
+       else if(sd[24]<250)
+           c4[24]="24";
+           else
+           c5[24]="24";
+                     //
+                     if (sd[25]<=50.0)
+                   c1[25]="25";
+       else if(sd[25]>50.0 && sd[25]<=100.0)
+           c2[25]="25";
+       else if(sd[25]>100 && sd[25]<=150.0)
+           c3[25]="25";
+       else if(sd[25]<250)
+           c4[25]="25";
+           else
+           c5[25]="25";
+                      //
+                     if (sd[26]<=50.0)
+                   c1[26]="26";
+       else if(sd[26]>50.0 && sd[26]<=100.0)
+           c2[26]="26";
+       else if(sd[26]>100 && sd[26]<=150.0)
+           c3[26]="26";
+       else if(sd[26]<250)
+           c4[26]="26";
+           else
+           c5[26]="26";
+                      //
+                     if (sd[27]<=50.0)
+                   c1[27]="27";
+       else if(sd[27]>50.0 && sd[27]<=100.0)
+           c2[27]="27";
+       else if(sd[27]>100 && sd[27]<=150.0)
+           c3[27]="27";
+       else if(sd[27]<250)
+           c4[27]="27";
+           else
+           c5[27]="27";
+                      //
+                     if (sd[28]<=50.0)
+                   c1[28]="28";
+       else if(sd[28]>50.0 && sd[28]<=100.0)
+           c2[28]="28";
+       else if(sd[28]>100 && sd[28]<=150.0)
+           c3[28]="28";
+       else if(sd[28]<250)
+           c4[28]="28";
+           else
+           c5[28]="28";
+                      //
+                     if (sd[29]<=50.0)
+                   c1[29]="29";
+       else if(sd[29]>50.0 && sd[29]<=100.0)
+           c2[29]="29";
+       else if(sd[29]>100 && sd[29]<=150.0)
+           c3[29]="29";
+       else if(sd[29]<250)
+           c4[29]="29";
+           else
+           c5[29]="29";
+                      //
+                     if (sd[30]<=50.0)
+                   c1[30]="30";
+       else if(sd[30]>50.0 && sd[30]<=100.0)
+           c2[30]="30";
+       else if(sd[30]>100 && sd[30]<=150.0)
+           c3[30]="30";
+       else if(sd[30]<250)
+           c4[30]="30";
+           else
+           c5[30]="30";
+                  
+        
+    
+    System.out.print("cluster1=");
+        for(int i=1;i<=30;i++){
+            
+            if(c1[i]!=null)  
+                
+            System.out.print(c1[i]+",");
+                   
+             }
+        System.out.print("\n");
+        System.out.print("cluster2=");
+        for(int i=1;i<=30;i++){
+            if(c2[i]!=null)    
+            System.out.print(c2[i]+",");
+            
+             }
+        System.out.print("\n");
+        System.out.print("cluster3=");
+        for(int i=1;i<=30;i++){
+            if(c3[i]!=null)    
+            System.out.print(c3[i]+",");
+                        }
+        System.out.print("\n");
+              System.out.print("cluster4=");
+        for(int i=1;i<=30;i++){
+            if(c4[i]!=null)    
+            System.out.print(c4[i]+",");
+                         }
+        
+         System.out.print("cluster5=");
+        for(int i=1;i<=30;i++){
+            if(c5[i]!=null)    
+            System.out.print(c5[i]+",");
+                         }
+        System.out.print("\n");
+    }
+    private void removeAllEdges(Graph g) {
+		List<String> edges = new ArrayList<String>(g.getEdges());
+		for (String e : edges) {
+			g.removeEdge(e);
+		}}
+    
+   public static class VertexLabelTransformer implements Transformer<String, String> {
+private final PickedInfo<String> pa;
+    public VertexLabelTransformer(PickedState<String> pa) {
+        super();
+        if (pa == null)
+                throw new IllegalArgumentException("PickedInfo instance must be non-null");
+            this.pa = pa;
+    }
+        @Override
+        public String transform(String i) {
+            String p = null;
+
+                  if ( "0".equals(i))
+                      p = "S";
+               
+                  else if("16".equals(i))                  
+                     p="D";
+            
+                else
+                p = i;
+
+                       return p;
+        }
+            
+        
+        }
+    
+   void inedge(Graph g){
+       removeAllEdges(g);
+       if(m1<=5.0)
+           g.addEdge("l", "1", "0", EdgeType.DIRECTED);
+       if(m4<=5.0)
+           g.addEdge("m", "4", "0", EdgeType.DIRECTED);
+       if(m5<=5.0)
+           g.addEdge("n", "5", "0", EdgeType.DIRECTED);
+       if(m6<=5.0)
+       g.addEdge("o", "6", "0", EdgeType.DIRECTED);
+           
+       
+   }
+
+
+    public static  class VertexPaintTransformer implements Transformer<String,Paint> {
+
+        private final PickedInfo<String> pi;
+       
+        VertexPaintTransformer ( PickedInfo<String> pi ) { 
+            super();
+            if (pi == null)
+                throw new IllegalArgumentException("PickedInfo instance must be non-null");
+            this.pi = pi;
+            
+        }
+        public Paint transform(String i) {
+            Color p = null;
+
+                  if ( "0".equals(i) || "16".equals(i)){
+                p = Color.GREEN;
+               
+                         }          
+            
+            
+            else
+                p =  Color.RED;
+
+                       return p;
+        }
+
+        
+    }
+
+    public class ButtonsPanel extends JPanel {
+       
+        public ButtonsPanel() {
+            
+				init();
+        }
+	public void init() {
+
+			
+		JButton plus = new JButton("Next");
+		plus.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+             click++;           
+             
+              if(click==1){
+        Layout<String, String> layout = new CircleLayout(g);
+        layout.setSize(new Dimension(100,100));
+       
+        
+        
+        VisualizationViewer<String, String> vv = new VisualizationViewer<String, String>(layout);
+        vv.setPreferredSize(new Dimension(400,400));
+        vv.getRenderContext().setVertexLabelRenderer(new DefaultVertexLabelRenderer(Color.black));
+       vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setEdgeDrawPaintTransformer(new ConstantTransformer(Color.black));
+       vv.getRenderContext().setVertexLabelTransformer(new VertexLabelTransformer(vv.getPickedVertexState()));
+        vv.getRenderContext().setVertexFillPaintTransformer(new VertexPaintTransformer(vv.getPickedVertexState()));
+        DefaultModalGraphMouse graphMouse = new DefaultModalGraphMouse();
+        graphMouse.setMode(edu.uci.ics.jung.visualization.control.ModalGraphMouse.Mode.ANNOTATING);
+        vv.setGraphMouse(graphMouse);
+        vv.setBackground(Color.white);
+        vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
+        Point2D(layout);
+
+        JFrame frame = new JFrame("MANET");
+        ButtonsPanel buttonsPanel = new ButtonsPanel();
+	frame.add(buttonsPanel, BorderLayout.SOUTH);
+      
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(vv); 
+                frame.pack();
+        frame.setVisible(true); }
+              if (click==2){
+                      Layout<String, String> layout = new CircleLayout(g);
+        layout.setSize(new Dimension(100,100));
+          
+        
+        VisualizationViewer<String, String> vv = new VisualizationViewer<String, String>(layout);
+        vv.setPreferredSize(new Dimension(400,400));
+        vv.getRenderContext().setVertexLabelRenderer(new DefaultVertexLabelRenderer(Color.black));
+       vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setEdgeDrawPaintTransformer(new ConstantTransformer(Color.black));
+       vv.getRenderContext().setVertexLabelTransformer(new VertexLabelTransformer(vv.getPickedVertexState()));
+        vv.getRenderContext().setVertexFillPaintTransformer(new VertexPaintTransformer(vv.getPickedVertexState()));
+        DefaultModalGraphMouse graphMouse = new DefaultModalGraphMouse();
+        graphMouse.setMode(edu.uci.ics.jung.visualization.control.ModalGraphMouse.Mode.ANNOTATING);
+        vv.setGraphMouse(graphMouse);
+        vv.setBackground(Color.white);
+        vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
+         Point2D(layout);
+         addEdge(g,layout);
+        JFrame frame = new JFrame("MANET");
+        ButtonsPanel buttonsPanel = new ButtonsPanel();
+	frame.add(buttonsPanel, BorderLayout.SOUTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(vv); 
+        frame.pack();
+        frame.setVisible(true);
+               
+              }
+              if (click==3){
+                      Layout<String, String> layout = new CircleLayout(g);
+        layout.setSize(new Dimension(100,100));
+        VisualizationViewer<String, String> vv = new VisualizationViewer<String, String>(layout);
+        vv.setPreferredSize(new Dimension(400,400));
+        vv.getRenderContext().setVertexLabelRenderer(new DefaultVertexLabelRenderer(Color.black));
+       vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+       vv.getRenderContext().setEdgeDrawPaintTransformer(new ConstantTransformer(Color.black));
+      vv.getRenderContext().setVertexLabelTransformer(new VertexLabelTransformer(vv.getPickedVertexState()));
+        vv.getRenderContext().setVertexFillPaintTransformer(new VertexPaintTransformer(vv.getPickedVertexState()));
+        DefaultModalGraphMouse graphMouse = new DefaultModalGraphMouse();
+        graphMouse.setMode(edu.uci.ics.jung.visualization.control.ModalGraphMouse.Mode.ANNOTATING);
+        vv.setGraphMouse(graphMouse);
+        vv.setBackground(Color.white);
+        vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
+       Point2D(layout);
+       addEdge(g,layout);
+       inedge(g);
+       cluster();
+        JFrame frame = new JFrame("MANET");
+        ButtonsPanel buttonsPanel = new ButtonsPanel();
+	frame.add(buttonsPanel, BorderLayout.SOUTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(vv); 
+        frame.pack();
+        frame.setVisible(true);
+                  
+              }
+                }
+
+                    });
+		add(plus);
+	}
+
+}
+
+   Design(Graph g){
+       this.g=g;
+       paint(g);
+   }
+    public void paint(Graph g2){
+             // Design sgv=new Design();
+        g=g2;
+              
+        Layout<String, String> layout = new CircleLayout(g2);
+        layout.setSize(new Dimension(100,100));
+        VisualizationViewer<String, String> vv = new VisualizationViewer<String, String>(layout);
+        vv.setPreferredSize(new Dimension(400,400));
+        vv.getRenderContext().setVertexLabelRenderer(new DefaultVertexLabelRenderer(Color.black));
+       vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+         vv.getRenderContext().setEdgeDrawPaintTransformer(new ConstantTransformer(Color.black));
+          DefaultModalGraphMouse graphMouse = new DefaultModalGraphMouse();
+        graphMouse.setMode(edu.uci.ics.jung.visualization.control.ModalGraphMouse.Mode.ANNOTATING);
+        vv.setGraphMouse(graphMouse);
+        vv.setBackground(Color.white);
+        vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
+        Point2D(layout);
+        JFrame frame = new JFrame("MANET");
+        ButtonsPanel buttonsPanel = new ButtonsPanel();
+	frame.add(buttonsPanel, BorderLayout.SOUTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(vv); 
+        frame.pack();
+        frame.setVisible(true);       
+    }
+  
+}
