@@ -28,6 +28,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 //import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -36,6 +37,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,7 +48,13 @@ public int path1,path2,path3;
     /**
      *
      */
-    
+    //final int nVertices = 100;
+		final double txRadius = 1000;
+		final double rxRadius = 1;
+		final double speedMin = 1;
+		final double speedMax = 10;
+		final double width = 10000; // huge arena, so make sure you zoom out
+		final double height = 10000;
     String[] c1=new String[35];
     String[] c2=new String[35];
     String[] c3=new String[35];
@@ -60,7 +68,7 @@ public int path1,path2,path3;
     private static double a0=Frame.x,a1=Frame.x1,a2=Frame.x2,a3=Frame.x3,a4=Frame.x4,a5=Frame.x5,a6=Frame.x6,a7=Frame.x7,a8=Frame.x8,a9=Frame.x9,a10=Frame.x10,a11=Frame.x11,a12=Frame.x12,a13=Frame.x13,a14=Frame.x14,a15=Frame.x15,a16=Frame.x16,a17=Frame.x17,a18=Frame.x18,a19=Frame.x19,a20=Frame.x20,a21=Frame.x21,a22=Frame.x22,a23=Frame.x23,a24=Frame.x24,a25=Frame.x25,a26=Frame.x26,a27=Frame.x27,a28=Frame.x28,a29=Frame.x29,a30=Frame.x30;
     private static double b0=Frame.y,b1=Frame.y1,b2=Frame.y2,b3=Frame.y3,b4=Frame.y4,b5=Frame.y5,b6=Frame.y6,b7=Frame.y7,b8=Frame.y8,b9=Frame.y9,b10=Frame.y10,b11=Frame.y11,b12=Frame.y12,b13=Frame.y13,b14=Frame.y14,b15=Frame.y15,b16=Frame.y16,b17=Frame.y17,b18=Frame.y18,b19=Frame.y19,b20=Frame.y20,b21=Frame.y21,b22=Frame.y22,b23=Frame.y23,b24=Frame.y24,b25=Frame.y25,b26=Frame.y26,b27=Frame.y27,b28=Frame.y28,b29=Frame.y29,b30=Frame.y30;
    
- static  Point2D p = new Point2DImpl();
+ /* static  Point2D p = new Point2DImpl();
   static Point2D ps = new Point2DImpl(a0,b0);
       static Point2D p1 = new Point2DImpl(a1,b1);
       static  Point2D p2 = new Point2DImpl(a2,b2);
@@ -91,7 +99,50 @@ public int path1,path2,path3;
        static Point2D p27 = new Point2DImpl(a27,b27);
        static Point2D p28 = new Point2DImpl(a28,b28);
        static Point2D p29 = new Point2DImpl(a29,b29);
-       static Point2D p30 = new Point2DImpl(a30,b30);
+       static Point2D p30 = new Point2DImpl(a30,b30);*/
+        static Point2D p = new Point2DImpl();
+        static Point2D p2 = new Point2DImpl(120,120);
+       static Point2D ps =new Point2DImpl(50.0,90.0);
+        static Point2D p4 = new Point2DImpl(90.0,70.0);
+        static Point2D p1 =new Point2DImpl(70.0,120.0);
+        static Point2D p3=new Point2DImpl(210.0,110.0);
+        static Point2D p5=new Point2DImpl(20.0,70.0);
+        static Point2D p6=new Point2DImpl(90.0,90.0);
+        static Point2D p7=new Point2DImpl(150.0,50.0);
+        static Point2D p8=new Point2DImpl(100.0,140.0);
+        static Point2D p9=new Point2DImpl(140.0,100.0);
+        static Point2D p10=new Point2DImpl(210.0,150.0);
+        static Point2D p11=new Point2DImpl(250.0,140.0);
+        static Point2D p12=new Point2DImpl(170.0,65.0);
+        static Point2D p13=new Point2DImpl(200.0,130.0);
+        static Point2D p14=new Point2DImpl(290.0,140.0);
+        static Point2D p15=new Point2DImpl(80.0,40.0);
+        static Point2D p16=new Point2DImpl(215.0,45.0);
+        static Point2D p17=new Point2DImpl(165.0,135.0);
+        static Point2D p18=new Point2DImpl(300.0,250.0);
+        static Point2D p19=new Point2DImpl(120.0,280.0);
+        static Point2D p20=new Point2DImpl(40.0,210.0);
+        static Point2D p21=new Point2DImpl(160.0,225.0);
+        static Point2D p22=new Point2DImpl(170.0,180.0);
+        static Point2D p23=new Point2DImpl(70.0,160.0);
+        static Point2D p24=new Point2DImpl(80.0,210.0);
+        static Point2D p25=new Point2DImpl(210.0,300.0);
+        static Point2D p26=new Point2DImpl(230.0,240.0);
+        static Point2D p27=new Point2DImpl(260.0,170.0);
+        static Point2D p28=new Point2DImpl(310.0,190.0);
+        static Point2D p29=new Point2DImpl(290.0,100.0);
+        static Point2D p30=new Point2DImpl(250.0,60.0);
+        
+        
+        static Point2D pd=new Point2DImpl(260.0,100.0);
+       
+       
+       
+       
+       
+               
+       
+       
 public double Distance(Point2D p1, Point2D p2){
     double d=p1.distance(p2);
     return d;
@@ -674,7 +725,6 @@ private final PickedInfo<String> pa;
 
         
     }
-
     public class ButtonsPanel extends JPanel {
        
         public ButtonsPanel() {
@@ -813,5 +863,7 @@ private final PickedInfo<String> pa;
         frame.pack();
         frame.setVisible(true);       
     }
-  
+
+
 }
+///
