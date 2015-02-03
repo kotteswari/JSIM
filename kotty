@@ -1,0 +1,92 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author Admin
+ */
+public class kotty extends JFrame {
+public float x=Frame.x, y=Frame.y, t=Frame.t;
+public static kotty k=new kotty();
+
+    kotty()   {
+        pan p= new pan();
+        JFrame f=new JFrame();
+        Button bu = new Button();
+        bu.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                       pan1 p1=new pan1();
+                        JFrame f=new JFrame();
+                         Button bu = new Button();
+                         bu.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                         pan2 p2=new pan2();
+                        JFrame f=new JFrame();
+                          Button bu = new Button();
+        bu.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                       pan3 p3=new pan3();
+                        JFrame f=new JFrame();
+                          f.setVisible(true);
+                          f.add(p3);
+        f.setSize(600,600);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setTitle("MANET");
+        
+                        }   
+                    });
+        bu.setLabel("Next");
+                         p2.add(bu);
+                         f.add(p2);
+        f.setVisible(true);
+        f.setSize(600,600);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setTitle("MANET");
+                   }   
+                    });
+                    
+                         bu.setLabel("Next");
+                        
+                         p1.add(bu);
+                         f.add(p1);
+        f.setVisible(true);
+        f.setSize(400,400);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setTitle("MANET");
+                    }   
+                    });
+        
+        
+	bu.setLabel("Next");
+         bu.setLocation(350, 350);
+        p.add(bu);
+        f.add(p);
+        f.setVisible(true);
+        f.setSize(600,600);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setTitle("MANET");
+    }
+
+   
+}
+
