@@ -1,0 +1,88 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author Admin
+ */
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+
+public class Ball extends JFrame {
+    /**
+     * 
+     */
+    //private static final long serialVersionUID = 1L;
+    private int width, height;
+    private float ball_X, ball_Y;
+    private float Xspeed;
+    private float Yspeed;
+    private Color color;
+    public Ball(Color color, int width, int height, float ball_X, float ball_Y){
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.ball_X = ball_X;
+        this.ball_Y = ball_Y;
+    }
+    public Color getColor(){
+        return this.color;
+    }
+    public int getWidth(){
+        return this.width;
+    }
+    public int getHeight(){
+        return this.height;
+    }
+    public float getBallX(){
+        return this.ball_X;
+    }
+    public float getBallY(){
+        return this.ball_Y;
+    }
+    public void setSpeedX(float x){
+        this.Xspeed = x;
+    }
+    public void setSpeedY(float x){
+        this.Yspeed = x;
+    }
+    public float getSpeedX(){
+        return this.Xspeed;
+    }
+    public float getSpeedY(){
+        return this.Yspeed;
+    }
+    public void setBallX(float x){
+        this.ball_X = x;
+    }
+    public void setBallY(float y){
+        this.ball_Y = y;
+    }
+    public void ballMove(int X, int Y, float xSpeed,float ySpeed){
+
+        //initialize Xspeed and Yspeed with the parameters of the function
+        this.setSpeedX(xSpeed);
+        this.setSpeedY(ySpeed);
+        //Moves the balls by adding the set speed to the position of the balls each time thread is executed
+        this.setBallX( this.getBallX() + this.getSpeedX());
+        this.setBallY(this.getBallY() + this.getSpeedY());
+        //When the balls hit the walls they are suppose to bounce back until they hit another wall.
+        if(this.getBallX() + 50 >= X){
+            this.setSpeedX(-xSpeed);
+        }
+        if(this.getBallY() + 50 >= Y){
+            this.setSpeedY(-ySpeed);
+        }
+        if(this.getBallX() + 25 <= 0){
+            this.setSpeedX(xSpeed);
+        }
+        if(this.getBallY() + 25 <= 0){
+            this.setSpeedY(ySpeed);
+        }
+    }
+}
